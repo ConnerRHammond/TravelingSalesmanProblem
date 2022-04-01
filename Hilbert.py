@@ -13,13 +13,13 @@ class Hilbert:
 	# }
 	def xy2d (self,n,x,y):
 		d = 0
-		s = n/2
+		s = n//2
 		while s > 0:
 			rx = x & s > 0
 			ry = x & s > 0
 			d += s * s * ((3 * rx) ^ ry)
 			self.rot(n,x,y,rx,ry)
-			s = n/2
+			s = n//2
 		return d
 
 	# //convert d to (x,y)
