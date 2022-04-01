@@ -1,5 +1,17 @@
 class Hilbert:
 
+	def findingMaxs(self,cities):
+		maxX = float('-inf')
+		maxY = float('-inf')
+		minX = float('inf')
+		minY = float('inf')
+		for city in cities:
+			maxX = city._x if city._x > maxX else maxX
+			maxY = city._y  if city._y > maxY else maxY
+			minX = city._x if city._x < minX else minX
+			minY = city._y if city._y < minY else minY
+		return  maxX, maxY, minX, minY
+
 	# //convert (x,y) to d
 	# int xy2d (int n, int x, int y) {
 	#     int rx, ry, s, d=0;
