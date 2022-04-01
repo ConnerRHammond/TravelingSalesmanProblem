@@ -7,7 +7,7 @@ class Hilbert:
 		minY = float('inf')
 		for city in cities:
 			maxX = city._x if city._x > maxX else maxX
-			maxY = city._y  if city._y > maxY else maxY
+			maxY = city._y if city._y > maxY else maxY
 			minX = city._x if city._x < minX else minX
 			minY = city._y if city._y < minY else minY
 		return  maxX, maxY, minX, minY
