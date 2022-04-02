@@ -52,7 +52,16 @@ class Hilbert:
 
 		# Iterate through the cities in the order of the curves
 		# 2 -> 1 -> 4 backwards -> 3 backwards
-		route1 = self.buildFullRoute(hilbertQuad2,)
+		route, unreached = self.buildFullRoute(hilbertQuad2, hilbertQuad1, hilbertQuad4, hilbertQuad3, False, False, True, True)
+
+		if len(unreached) > 0:
+			route, unreached = self.buildFullRoute(hilbertQuad1, hilbertQuad4, hilbertQuad3, hilbertQuad2, False, True, True, False)
+
+		if len(unreached) > 0:
+			route, unreached = self.buildFullRoute(hilbertQuad4, hilbertQuad3, hilbertQuad2, hilbertQuad1, True, True, False, False)
+
+		if len(unreached) > 0:
+			route, unreached = self.buildFullRoute(hilbertQuad3, hilbertQuad2, hilbertQuad1, hilbertQuad4, True, False, False, True)
 
 		results = {}
 		results['soln'] = TSPSolution(route)
@@ -68,10 +77,10 @@ class Hilbert:
 	def buildFullRoute(self, quad1, quad2, quad3, quad4, reverse1, reverse2, reverse3, reverse4): # must pass the quadrants in clockwise order
 		route = []
 		unReachedCities = []
-		self.buildRouteFromDict(route, quad1, unReachedCities)
-		self.buildRouteFromDict(route, quad2, unReachedCities)
-		self.buildRouteFromDict(route, quad3, unReachedCities, True)
-		self.buildRouteFromDict(route, quad4, unReachedCities, True)
+		self.buildRouteFromDict(route, quad1, unReachedCities, reverse1)
+		self.buildRouteFromDict(route, quad2, unReachedCities, reverse2)
+		self.buildRouteFromDict(route, quad3, unReachedCities, reverse3)
+		self.buildRouteFromDict(route, quad4, unReachedCities, reverse4)
 
 		return route, unReachedCities
 
