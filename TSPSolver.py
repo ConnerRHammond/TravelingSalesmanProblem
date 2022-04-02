@@ -1,11 +1,8 @@
 #!/usr/bin/python3
 
+import imp
 from which_pyqt import PYQT_VER
-if PYQT_VER == 'PYQT5':
-    from PyQt5.QtCore import QLineF, QPointF
-elif PYQT_VER == 'PYQT4':
-    from PyQt5.QtCore import QLineF, QPointF
-elif PYQT_VER == 'PYQT6':
+if PYQT_VER == 'PYQT6':
     from PyQt6.QtCore import QLineF, QPointF
 else:
     raise Exception('Unsupported Version of PyQt: {}'.format(PYQT_VER))
@@ -14,6 +11,7 @@ else:
 import time
 import numpy as np
 from TSPClasses import *
+from Hilbert import Hilbert
 from BranchAndBound import BranchAndBound
 import heapq
 import itertools
@@ -143,4 +141,4 @@ class TSPSolver:
 	'''
 
     def fancy(self, time_allowance=60.0):
-        pass
+        return Hilbert(self._scenario.getCities()).solve(time_allowance)

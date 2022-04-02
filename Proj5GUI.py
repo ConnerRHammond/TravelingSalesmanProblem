@@ -8,14 +8,7 @@ import time
 
 
 from which_pyqt import PYQT_VER
-if PYQT_VER == 'PYQT5':
-    from PyQt5.QtWidgets import *
-    from PyQt5.QtGui import *
-    from PyQt5.QtCore import *
-elif PYQT_VER == 'PYQT5':
-    from PyQt5.QtGui import *
-    from PyQt5.QtCore import *
-elif PYQT_VER == 'PYQT6':
+if PYQT_VER == 'PYQT6':
     from PyQt6.QtWidgets import *
     from PyQt6.QtGui import *
     from PyQt6.QtCore import *
