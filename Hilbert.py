@@ -156,21 +156,6 @@ class Hilbert:
 			s //= 2
 		return d
 
-	# convert d to (x,y)
-	def d2xy(self,n,d,x,y):
-		t = d
-		x = 0
-		y = 0
-		s = 1
-		while s < n:
-			rx = 1 & (t/2)
-			ry = 1 & (t ^ rx)
-			self.rot(s,x,rx,ry)
-			x += s * rx
-			y += s * ry
-			t = t/4
-			s = s * 2
-
 	# rotate/flip a quadrant appropriately
 	def rot(self, n, x, y, rx, ry):
 		if ry == 0:
